@@ -88,7 +88,7 @@ const Create = () => {
         };
 
         try {
-            const response = await axios.post('/api/create-test', formattedData, {
+            const response = await axios.post('https://proctorai2-1.onrender.com/api/create-test', formattedData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },

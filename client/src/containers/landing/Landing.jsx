@@ -42,7 +42,7 @@ const Landing = () => {
 		}
 
 		try {
-			const response = await axios.post('/api/test-taker', {
+			const response = await axios.post('https://proctorai2-1.onrender.com/api/test-taker', {
 				testCode,
 				name,
 				registrationNumber,

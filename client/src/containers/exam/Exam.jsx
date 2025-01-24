@@ -38,7 +38,7 @@ const Exam = ({ examName = '', formLink = '' }) => {
 
   const fetchExamDetails = async () => {
     try {
-      const response = await axios.get(`/api/test-taker/${test_code}/${registration_number}`);
+      const response = await axios.get(`https://proctorai2-1.onrender.com/api/test-taker/${test_code}/${registration_number}`);
       const examData1 = response.data;
       if (examData1) {
         setDetails(examData1);
@@ -83,7 +83,7 @@ useEffect(() => {
         if (warningCnt > 0) {  // Ensure warning count is valid before sending
             try {
                 await axios.put(
-                    `/api/test-taker/${test_code}/${registration_number}/warningCount`,
+                    `https://proctorai2-1.onrender.com/api/test-taker/${test_code}/${registration_number}/warningCount`,
                     { warningCount: warningCnt }
                 );
             } catch (error) {
@@ -205,7 +205,7 @@ useEffect(() => {
   useEffect(() => {
     const fetchAllTests = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/all-tests');
+        const response = await fetch('https://proctorai2-1.onrender.com/api/all-tests');
 
         if (!response.ok) {
           throw new Error('Failed to fetch test details');

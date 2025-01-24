@@ -28,7 +28,7 @@ const Register = () => {
 		};
 
 		try {
-			const response = await axios.post('/api/register', data, {
+			const response = await axios.post('https://proctorai2-1.onrender.com/api/register', data, {
 				headers: { 'Content-Type': 'application/json' },
 			});
 			alert('Registration successful!');

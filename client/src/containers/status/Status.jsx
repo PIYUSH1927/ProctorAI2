@@ -22,7 +22,7 @@ const Status = () => {
 	useEffect(() => {
 		const fetchTestTakers = async () => {
 			try {
-				const response = await axios.get('/api/test-takers');
+				const response = await axios.get('https://proctorai2-1.onrender.com/api/test-takers');
 				const allTestTakers = response.data.data;
 
 				setTestTakers(allTestTakers.filter(student => student.testCode === link));
@@ -49,7 +49,7 @@ const Status = () => {
 
 	const handleAllow = async (registrationNumber) => {
 		try {
-			await axios.put(`/api/test-taker/${link}/${registrationNumber}/warningCount`, {
+			await axios.put(`https://proctorai2-1.onrender.com/api/test-taker/${link}/${registrationNumber}/warningCount`, {
 				warningCount: 0,
 			});
 
