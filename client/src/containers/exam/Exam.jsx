@@ -38,7 +38,7 @@ const Exam = ({ examName = '', formLink = '' }) => {
 
   const fetchExamDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/test-taker/${test_code}/${registration_number}`);
+      const response = await axios.get(`/api/test-taker/${test_code}/${registration_number}`);
       const examData1 = response.data;
       if (examData1) {
         setDetails(examData1);
@@ -83,7 +83,7 @@ useEffect(() => {
         if (warningCnt > 0) {  // Ensure warning count is valid before sending
             try {
                 await axios.put(
-                    `http://localhost:5000/api/test-taker/${test_code}/${registration_number}/warningCount`,
+                    `/api/test-taker/${test_code}/${registration_number}/warningCount`,
                     { warningCount: warningCnt }
                 );
             } catch (error) {

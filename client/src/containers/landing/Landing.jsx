@@ -42,7 +42,7 @@ const Landing = () => {
 		}
 
 		try {
-			const response = await axios.post('http://localhost:5000/api/test-taker', {
+			const response = await axios.post('/api/test-taker', {
 				testCode,
 				name,
 				registrationNumber,
