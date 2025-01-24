@@ -12,13 +12,9 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin || origin === 'http://localhost:3000' || origin === 'https://proctor-ai-2.vercel.app/') {
-        return callback(null, true);
-      }
-      return callback(new Error('Not allowed by CORS'));
-    },
-    credentials: true,
+    origin: 'https://proctor-ai-2.vercel.app', // Your specific frontend URL
+    methods: ['*'], // Allow all HTTP methods
+    credentials: true, // Allow credentials (cookies, headers)
   })
 );
 
