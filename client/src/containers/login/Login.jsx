@@ -27,6 +27,8 @@ const Login = () => {
 				Cookies.set('token', response.data.token, { expires: 7, secure: true, sameSite: 'None' });
 				Cookies.set('userId', userId, { expires: 1 });
 
+				console.log('Token set in cookies:', Cookies.get('token')); 
+
 				return true;
 			}
 		} catch (error) {

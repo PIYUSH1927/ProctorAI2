@@ -55,7 +55,7 @@ const signIn = (req, res) => {
                         httpOnly: true,        // For security: can't be accessed by JavaScript
                         secure: true,          // Always use HTTPS in production
                         sameSite: 'None',      // For cross-origin requests
-                        expires: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),                // Set cookie expiration
+                        expires: expires               // Set cookie expiration
                     });
 
                     res.status(200).json({
