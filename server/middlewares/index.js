@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET_KEY = "mySuperSecretKey12345"; 
 
 const requireSignIn = (req, res, next) => {
+
+    console.log("Cookies:", req.cookies); 
     const token = req.cookies.token; 
 
     if (token) {
