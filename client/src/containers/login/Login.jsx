@@ -15,10 +15,10 @@ const Login = () => {
 
 	const handleLogin = async () => {
 		try {
-			const response = await axios.post('https://proctorai2-1.onrender.com/api/signin', {
-				email,
-				password,
-			});
+			const response = await axios.post('https://proctorai2-1.onrender.com/api/signin', 
+				{ email, password },
+  { withCredentials: true } 
+			);
 
 			const { token, userId } = response.data;
 
