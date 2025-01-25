@@ -12,9 +12,10 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: 'https://proctor-ai-2.vercel.app', // Your specific frontend URL
-    methods: ['*'], // Allow all HTTP methods
-    credentials: true, // Allow credentials (cookies, headers)
+    origin: 'https://proctor-ai-2.vercel.app', // Your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true, // Make sure credentials are included (cookies, etc.)
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allow Authorization header
   })
 );
 
