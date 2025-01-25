@@ -28,7 +28,7 @@ export default class PieChart extends React.Component {
     const { testCode } = this.props; 
 
     try {
-      const response = await axios.get('/api/test-takers');
+      const response = await axios.get('https://proctorai2-1.onrender.com/api/test-takers');
       const allTestTakers = response.data.data;
 
       const filteredTestTakers = allTestTakers.filter((student) => student.testCode === testCode);
