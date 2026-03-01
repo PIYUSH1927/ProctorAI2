@@ -8,13 +8,15 @@ import {
   Register,
   Status,
   Exam,
+  About,
+  Contact,
 } from './containers';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Cookies from 'js-cookie';
 
 const App = () => {
-  const isAuthenticated = !!Cookies.get('token'); 
+  const isAuthenticated = !!Cookies.get('token');
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
@@ -39,38 +41,40 @@ const App = () => {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route 
-            exact 
-            path="/" 
-            element={isAuthenticated ? <Navigate to="/dashboard" /> : <Landing />} 
+          <Route
+            exact
+            path="/"
+            element={isAuthenticated ? <Navigate to="/dashboard" /> : <Landing />}
           />
-          <Route 
-            path="/register" 
-            element={isAuthenticated ? <Navigate to="/dashboard" /> : <Register />} 
+          <Route
+            path="/register"
+            element={isAuthenticated ? <Navigate to="/dashboard" /> : <Register />}
           />
-          <Route 
-            path="/login" 
-            element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />} 
+          <Route
+            path="/login"
+            element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />}
           />
-          <Route 
-            path="/exam" 
-            element={isAuthenticated ? <Navigate to="/dashboard" /> : <Exam />} 
+          <Route
+            path="/exam"
+            element={isAuthenticated ? <Navigate to="/dashboard" /> : <Exam />}
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+
+          <Route
+            path="/dashboard"
+            element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/status"
+            element={isAuthenticated ? <Status /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/create"
+            element={isAuthenticated ? <Create /> : <Navigate to="/login" />}
           />
 
-          <Route 
-            path="/dashboard" 
-            element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} 
-          />
-          <Route 
-            path="/status" 
-            element={isAuthenticated ? <Status /> : <Navigate to="/login" />} 
-          />
-          <Route 
-            path="/create" 
-            element={isAuthenticated ? <Create /> : <Navigate to="/login" />} 
-          />
-
-          <Route path="*" element={<Navigate to={isAuthenticated ? "/dashboard" : "/"} />} 
+          <Route path="*" element={<Navigate to={isAuthenticated ? "/dashboard" : "/"} />}
           />
         </Routes>
       </BrowserRouter>

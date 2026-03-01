@@ -74,26 +74,27 @@ const Exam = ({ examName = '', formLink = '' }) => {
     setWarningCnt(newWarningCount + 1);
 
     if (newWarningCount > 3) {
-        terminateExam();
+      terminateExam();
     }
-};
+  };
 
-useEffect(() => {
+
+  useEffect(() => {
     const updateWarningCount = async () => {
-        if (warningCnt > 0) {  // Ensure warning count is valid before sending
-            try {
-                await axios.put(
-                    `https://proctorai2-1.onrender.com/api/test-taker/${test_code}/${registration_number}/warningCount`,
-                    { warningCount: warningCnt }
-                );
-            } catch (error) {
-                console.error('Error updating warning count:', error);
-            }
+      if (warningCnt > 0) {  // Ensure warning count is valid before sending
+        try {
+          await axios.put(
+            `https://proctorai2-1.onrender.com/api/test-taker/${test_code}/${registration_number}/warningCount`,
+            { warningCount: warningCnt }
+          );
+        } catch (error) {
+          console.error('Error updating warning count:', error);
         }
+      }
     };
 
     updateWarningCount();
-}, [warningCnt]);
+  }, [warningCnt]);
 
   const overlay = document.getElementById('overlay');
   const formBlur = document.getElementById('form-blur');
@@ -163,13 +164,13 @@ useEffect(() => {
     if (peopleCount > 1) {
       setShowMessage('Warning: Multiple people detected. Your exam will be terminated if this is not addressed.');
       disableForm();
-      incrementWarningCount(); 
+      incrementWarningCount();
     } else if (peopleCount === 0) {
       setShowMessage('Warning: Your face is not visible. Your exam will be terminated if this is not addressed.');
       disableForm();
       incrementWarningCount();
     } else if (peopleCount === 1) {
-      setShowMessage(''); 
+      setShowMessage('');
       enableForm();
     }
     if (phoneCount > 0) {
