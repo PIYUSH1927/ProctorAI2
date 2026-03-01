@@ -10,12 +10,25 @@ const app = express();
 app.use(cookieParser());
 
 
+const allowedOrigins = [
+  'https://proctor-ai-2.vercel.app',
+  'http://localhost:3001',
+  'http://localhost:3000', // add this too just in case
+];
+
 app.use(
   cors({
-    origin: 'https://proctor-ai-2.vercel.app', // Your frontend URL
+    origin: function (origin, callback) {
+      // Allow requests with no origin (mobile apps, curl, etc.)
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true, // Make sure credentials are included (cookies, etc.)
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allow Authorization header
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
 
